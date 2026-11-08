@@ -1,36 +1,11 @@
-const assert = require('node:assert/strict');
-const fs = require('node:fs');
-const os = require('node:os');
-const path = require('node:path');
-const { test } = require('node:test');
-const Database = require('better-sqlite3');
-const { createApp } = require('../src/app');
-const { createBackupRunner } = require('../src/backups');
+import assert from 'node:assert/strict';
+import { test } from 'node:test';
+import { authHeaders, createTestApi, json } from './helpers.mjs';
 
-test('authenticates users and provides protected document, accounting, and media APIs', async (t) => {
-  const dataDir = fs.mkdtempSync(path.join(os.tmpdir(), 'naib-analyzer-'));
-  const app = createApp({
-    databasePath: path.join(dataDir, 'test.sqlite'),
-    storagePath: path.join(dataDir, 'uploads'),
-    tokenSecret: 'test-only-token-secret-long-enough',
-    initialAdminSetupKey: 'test-only-initial-admin-key-long-enough'
-  });
-  const server = app.listen(0, '127.0.0.1');
-  await new Promise((resolve) => server.once('listening', resolve));
-  t.after(async () => {
-    await new Promise((resolve) => server.close(resolve));
-    app.locals.close();
-    fs.rmSync(dataDir, { recursive: true, force: true });
-  });
-
-  const base = `http://127.0.0.1:${server.address().port}`;
-  const request = (url, options = {}) => fetch(`${base}${url}`, options);
-  const authHeaders = (token) => ({ Authorization: ['Bearer', token].join(' ') });
-  const json = (method, body, token) => ({
-    method,
-    headers: { 'Content-Type': 'application/json', ...(token ? authHeaders(token) : {}) },
-    body: JSON.stringify(body)
-  });
+test('authenticates users and provides protected document, accounting, media, and security APIs', async (t) => {
+  const api = await createTestApi();
+  t.after(() => api.close());
+  const { request } = api;
 
   const status = await request('/api/auth/status');
   assert.deepEqual(await status.json(), { configured: false });
@@ -366,149 +341,10 @@ test('authenticates users and provides protected document, accounting, and media
     headers: authHeaders(staff.token)
   })).status, 409);
 
-  let limitedResponse;
-  for (let i = 0; i < 300; i += 1) limitedResponse = await request('/api/health');
-  assert.equal(limitedResponse.status, 429);
-});
 
-test('trusted proxy client IPs have independent login limits', async (t) => {
-  const dataDir = fs.mkdtempSync(path.join(os.tmpdir(), 'naib-proxy-'));
-  const app = createApp({
-    databasePath: path.join(dataDir, 'test.sqlite'),
-    storagePath: path.join(dataDir, 'uploads'),
-    tokenSecret: 'test-only-token-secret-long-enough',
-    initialAdminSetupKey: 'test-only-initial-admin-key-long-enough',
-    trustProxy: ['loopback']
-  });
-  const server = app.listen(0, '127.0.0.1');
-  await new Promise((resolve) => server.once('listening', resolve));
-  t.after(async () => {
-    await new Promise((resolve) => server.close(resolve));
-    app.locals.close();
-    fs.rmSync(dataDir, { recursive: true, force: true });
-  });
-
-  const base = `http://127.0.0.1:${server.address().port}`;
-  const credentials = {
-    username: 'Site Owner',
-    ownerLoginId: 'private-owner-22',
-    setupKey: 'test-only-initial-admin-key-long-enough',
-    password: 'very-long-test-password'
-  };
-  const registration = await fetch(`${base}/api/auth/register`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(credentials)
-  });
-  assert.equal(registration.status, 201);
-
-  const failedLogin = () => fetch(`${base}/api/auth/login`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'X-Forwarded-For': '198.51.100.10' },
-    body: JSON.stringify({ ...credentials, password: 'incorrect-password' })
-  });
-  for (let i = 0; i < 10; i += 1) assert.equal((await failedLogin()).status, 401);
-  assert.equal((await failedLogin()).status, 429);
-
-  const otherClient = await fetch(`${base}/api/auth/login`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'X-Forwarded-For': '198.51.100.11' },
-    body: JSON.stringify({ loginId: credentials.ownerLoginId, password: credentials.password })
-  });
-  assert.equal(otherClient.status, 200);
-});
-
-test('adds stable vehicle codes to data stored before the vehicle registry existed', (t) => {
-  const dataDir = fs.mkdtempSync(path.join(os.tmpdir(), 'naib-vehicle-migration-'));
-  const databasePath = path.join(dataDir, 'legacy.sqlite');
-  const legacyDb = new Database(databasePath);
-  legacyDb.exec(`
-    CREATE TABLE users (
-      id INTEGER PRIMARY KEY, username TEXT NOT NULL UNIQUE, password_hash TEXT NOT NULL,
-      salt TEXT NOT NULL, role TEXT NOT NULL DEFAULT 'staff', created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
-    );
-    CREATE TABLE media (
-      id INTEGER PRIMARY KEY, filename TEXT NOT NULL UNIQUE, original_name TEXT NOT NULL,
-      mime_type TEXT NOT NULL, size INTEGER NOT NULL, category TEXT NOT NULL DEFAULT 'عام',
-      created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
-    );
-    CREATE TABLE security_access (
-      id INTEGER PRIMARY KEY, person_name TEXT NOT NULL, identity_number TEXT NOT NULL, phone TEXT NOT NULL,
-      organization TEXT NOT NULL, purpose TEXT NOT NULL, gate TEXT NOT NULL,
-      person_count INTEGER NOT NULL, vehicle_plate TEXT NOT NULL DEFAULT '',
-      entered_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, exited_at TEXT, created_by INTEGER
-    );
-    CREATE TABLE vehicle_permits (
-      id INTEGER PRIMARY KEY, permit_number TEXT NOT NULL UNIQUE, vehicle_plate TEXT NOT NULL,
-      driver_name TEXT NOT NULL, identity_number TEXT NOT NULL, phone TEXT NOT NULL,
-      organization TEXT NOT NULL, purpose TEXT NOT NULL, valid_from TEXT NOT NULL,
-      valid_until TEXT NOT NULL, media_id INTEGER NOT NULL, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
-      created_by INTEGER
-    );
-    INSERT INTO security_access
-      (person_name, identity_number, phone, organization, purpose, gate, person_count, vehicle_plate)
-    VALUES ('زائر', 'ID-1', '0500000000', '', 'زيارة', 'الرئيسية', 1, 'xyz 987');
-    INSERT INTO media (filename, original_name, mime_type, size) VALUES ('old.png', 'old.png', 'image/png', 1);
-    INSERT INTO vehicle_permits
-      (permit_number, vehicle_plate, driver_name, identity_number, phone, organization,
-        purpose, valid_from, valid_until, media_id)
-    VALUES ('OLD-1', 'XYZ 987', 'سائق', 'ID-2', '0500000001', '', 'دخول', '2020-01-01', '2030-01-01', 1);
-  `);
-  legacyDb.close();
-  t.after(() => fs.rmSync(dataDir, { recursive: true, force: true }));
-
-  const app = createApp({
-    databasePath,
-    storagePath: path.join(dataDir, 'uploads'),
-    tokenSecret: 'test-only-token-secret-long-enough'
-  });
-  const vehicles = app.locals.db.prepare(`
-    SELECT DISTINCT vehicle_code FROM (
-      SELECT v.vehicle_code FROM security_access a JOIN vehicles v ON v.id = a.vehicle_id
-      UNION ALL
-      SELECT v.vehicle_code FROM vehicle_permits p JOIN vehicles v ON v.id = p.vehicle_id
-    )
-  `).all();
-  assert.equal(vehicles.length, 1);
-  assert.match(vehicles[0].vehicle_code, /^VH-[0-9A-F]{12}$/);
-  app.locals.close();
-});
-
-test('daily backups retry media independently when its first copy fails', async (t) => {
-  const dataDir = fs.mkdtempSync(path.join(os.tmpdir(), 'naib-backup-'));
-  const storagePath = path.join(dataDir, 'uploads');
-  const backupDir = path.join(dataDir, 'backups');
-  fs.mkdirSync(storagePath);
-  fs.writeFileSync(path.join(storagePath, 'document.txt'), 'saved file');
-  t.after(() => fs.rmSync(dataDir, { recursive: true, force: true }));
-
-  let databaseBackups = 0;
-  let uploadCopies = 0;
-  const backup = createBackupRunner({
-    db: {
-      backup: async (filename) => {
-        databaseBackups += 1;
-        await fs.promises.writeFile(filename, 'database snapshot');
-      }
-    },
-    storagePath,
-    backupDir,
-    now: () => new Date('2026-10-03T12:00:00.000Z'),
-    copyUploads: async (source, destination, options) => {
-      uploadCopies += 1;
-      if (uploadCopies === 1) {
-        fs.mkdirSync(destination);
-        fs.writeFileSync(path.join(destination, 'partial.txt'), 'partial');
-        throw new Error('simulated interrupted media copy');
-      }
-      await fs.promises.cp(source, destination, options);
-    }
-  });
-
-  await assert.rejects(backup(), AggregateError);
-  await backup();
-  assert.equal(databaseBackups, 1);
-  assert.equal(uploadCopies, 2);
-  assert.equal(fs.readFileSync(path.join(backupDir, 'analyzer-2026-10-03.sqlite'), 'utf8'), 'database snapshot');
-  assert.equal(fs.readFileSync(path.join(backupDir, 'uploads-2026-10-03', 'document.txt'), 'utf8'), 'saved file');
+  // Uploaded files are stored in the media store (Netlify Blobs in production), not on local disk.
+  assert.ok(api.media.files.size >= 4);
+  const audit = await (await request('/api/audit', { headers: authHeaders(staff.token) })).json();
+  assert.ok(audit.some((entry) => entry.action === 'إضافة تصريح مركبة'));
+  assert.match(audit[0].created_at, /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/);
 });

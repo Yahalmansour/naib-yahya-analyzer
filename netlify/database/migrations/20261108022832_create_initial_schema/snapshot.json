@@ -1,0 +1,2249 @@
+{
+  "version": "8",
+  "dialect": "postgres",
+  "id": "26f4c90d-87d2-405d-ba31-7811dbcc11b3",
+  "prevIds": [
+    "00000000-0000-0000-0000-000000000000"
+  ],
+  "ddl": [
+    {
+      "isRlsEnabled": false,
+      "name": "app_secrets",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "audit_log",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "auth_failures",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "daily_procedures",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "documents",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "feature_requests",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "media",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "organization_profile",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "permit_alert_deliveries",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "security_access",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "security_access_members",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "security_reports",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "transactions",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "users",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "vehicle_permits",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "vehicles",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "name",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "app_secrets"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "value",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "app_secrets"
+    },
+    {
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "app_secrets"
+    },
+    {
+      "type": "serial",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "audit_log"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "action",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "audit_log"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "details",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "audit_log"
+    },
+    {
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "audit_log"
+    },
+    {
+      "type": "serial",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "auth_failures"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "client_key",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "auth_failures"
+    },
+    {
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "auth_failures"
+    },
+    {
+      "type": "serial",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "daily_procedures"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "title",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "daily_procedures"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "category",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "daily_procedures"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "''",
+      "generated": null,
+      "identity": null,
+      "name": "location",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "daily_procedures"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "details",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "daily_procedures"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "media_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "daily_procedures"
+    },
+    {
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "daily_procedures"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "created_by",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "daily_procedures"
+    },
+    {
+      "type": "serial",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "documents"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "title",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "documents"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "content",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "documents"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "analysis_json",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "documents"
+    },
+    {
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "documents"
+    },
+    {
+      "type": "serial",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "feature_requests"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "category",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "feature_requests"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "message",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "feature_requests"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "'جديد'",
+      "generated": null,
+      "identity": null,
+      "name": "status",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "feature_requests"
+    },
+    {
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "feature_requests"
+    },
+    {
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "updated_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "feature_requests"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "user_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "feature_requests"
+    },
+    {
+      "type": "serial",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "media"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "filename",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "media"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "original_name",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "media"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "mime_type",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "media"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "size",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "media"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "'عام'",
+      "generated": null,
+      "identity": null,
+      "name": "category",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "media"
+    },
+    {
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "media"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "organization_profile"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "organization_name",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "organization_profile"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "work_location",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "organization_profile"
+    },
+    {
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "updated_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "organization_profile"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "updated_by",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "organization_profile"
+    },
+    {
+      "type": "serial",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "permit_alert_deliveries"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "permit_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "permit_alert_deliveries"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "alert_type",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "permit_alert_deliveries"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "0",
+      "generated": null,
+      "identity": null,
+      "name": "attempt_count",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "permit_alert_deliveries"
+    },
+    {
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "last_attempt_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "permit_alert_deliveries"
+    },
+    {
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "sent_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "permit_alert_deliveries"
+    },
+    {
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "permit_alert_deliveries"
+    },
+    {
+      "type": "serial",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "security_access"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "person_name",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "security_access"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "identity_number",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "security_access"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "phone",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "security_access"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "organization",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "security_access"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "purpose",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "security_access"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "gate",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "security_access"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "person_count",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "security_access"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "''",
+      "generated": null,
+      "identity": null,
+      "name": "vehicle_plate",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "security_access"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "vehicle_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "security_access"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "vehicle_photo_media_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "security_access"
+    },
+    {
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "entered_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "security_access"
+    },
+    {
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "exited_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "security_access"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "created_by",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "security_access"
+    },
+    {
+      "type": "serial",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "security_access_members"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "access_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "security_access_members"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "person_name",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "security_access_members"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "identity_number",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "security_access_members"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "phone",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "security_access_members"
+    },
+    {
+      "type": "serial",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "security_reports"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "title",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "security_reports"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "category",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "security_reports"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "''",
+      "generated": null,
+      "identity": null,
+      "name": "location",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "security_reports"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "details",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "security_reports"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "media_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "security_reports"
+    },
+    {
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "security_reports"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "created_by",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "security_reports"
+    },
+    {
+      "type": "serial",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "transactions"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "kind",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "transactions"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "description",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "transactions"
+    },
+    {
+      "type": "numeric(14,2)",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "amount",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "transactions"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "'SAR'",
+      "generated": null,
+      "identity": null,
+      "name": "currency",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "transactions"
+    },
+    {
+      "type": "date",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "transaction_date",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "transactions"
+    },
+    {
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "transactions"
+    },
+    {
+      "type": "serial",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "users"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "username",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "users"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "identity_number",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "users"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "owner_login_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "users"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "password_hash",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "users"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "salt",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "users"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "'staff'",
+      "generated": null,
+      "identity": null,
+      "name": "role",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "users"
+    },
+    {
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "users"
+    },
+    {
+      "type": "serial",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "vehicle_permits"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "permit_number",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "vehicle_permits"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "vehicle_plate",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "vehicle_permits"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "driver_name",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "vehicle_permits"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "identity_number",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "vehicle_permits"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "phone",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "vehicle_permits"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "organization",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "vehicle_permits"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "purpose",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "vehicle_permits"
+    },
+    {
+      "type": "date",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "valid_from",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "vehicle_permits"
+    },
+    {
+      "type": "date",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "valid_until",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "vehicle_permits"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "media_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "vehicle_permits"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "vehicle_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "vehicle_permits"
+    },
+    {
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "vehicle_permits"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "created_by",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "vehicle_permits"
+    },
+    {
+      "type": "serial",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "vehicles"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "vehicle_code",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "vehicles"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "vehicle_plate",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "vehicles"
+    },
+    {
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "vehicles"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "client_key",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        },
+        {
+          "value": "created_at",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "name": "auth_failures_client_idx",
+      "entityType": "indexes",
+      "schema": "public",
+      "table": "auth_failures"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "exited_at",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        },
+        {
+          "value": "id",
+          "isExpression": false,
+          "asc": false,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "name": "security_access_status_idx",
+      "entityType": "indexes",
+      "schema": "public",
+      "table": "security_access"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "vehicle_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        },
+        {
+          "value": "id",
+          "isExpression": false,
+          "asc": false,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "name": "security_access_vehicle_idx",
+      "entityType": "indexes",
+      "schema": "public",
+      "table": "security_access"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "access_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "name": "security_access_members_access_idx",
+      "entityType": "indexes",
+      "schema": "public",
+      "table": "security_access_members"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "transaction_date",
+          "isExpression": false,
+          "asc": false,
+          "nullsFirst": false,
+          "opclass": null
+        },
+        {
+          "value": "id",
+          "isExpression": false,
+          "asc": false,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "name": "transactions_date_idx",
+      "entityType": "indexes",
+      "schema": "public",
+      "table": "transactions"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "valid_until",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "name": "vehicle_permits_expiry_idx",
+      "entityType": "indexes",
+      "schema": "public",
+      "table": "vehicle_permits"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "vehicle_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        },
+        {
+          "value": "id",
+          "isExpression": false,
+          "asc": false,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "name": "vehicle_permits_vehicle_idx",
+      "entityType": "indexes",
+      "schema": "public",
+      "table": "vehicle_permits"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "media_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "media",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "daily_procedures_media_id_media_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "daily_procedures"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "created_by"
+      ],
+      "schemaTo": "public",
+      "tableTo": "users",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "daily_procedures_created_by_users_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "daily_procedures"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "user_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "users",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "feature_requests_user_id_users_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "feature_requests"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "updated_by"
+      ],
+      "schemaTo": "public",
+      "tableTo": "users",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "organization_profile_updated_by_users_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "organization_profile"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "permit_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "vehicle_permits",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "permit_alert_deliveries_permit_id_vehicle_permits_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "permit_alert_deliveries"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "vehicle_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "vehicles",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "security_access_vehicle_id_vehicles_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "security_access"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "vehicle_photo_media_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "media",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "security_access_vehicle_photo_media_id_media_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "security_access"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "created_by"
+      ],
+      "schemaTo": "public",
+      "tableTo": "users",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "security_access_created_by_users_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "security_access"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "access_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "security_access",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "name": "security_access_members_access_id_security_access_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "security_access_members"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "media_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "media",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "security_reports_media_id_media_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "security_reports"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "created_by"
+      ],
+      "schemaTo": "public",
+      "tableTo": "users",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "security_reports_created_by_users_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "security_reports"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "media_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "media",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "vehicle_permits_media_id_media_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "vehicle_permits"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "vehicle_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "vehicles",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "vehicle_permits_vehicle_id_vehicles_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "vehicle_permits"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "created_by"
+      ],
+      "schemaTo": "public",
+      "tableTo": "users",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "vehicle_permits_created_by_users_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "vehicle_permits"
+    },
+    {
+      "columns": [
+        "name"
+      ],
+      "nameExplicit": false,
+      "name": "app_secrets_pkey",
+      "schema": "public",
+      "table": "app_secrets",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "audit_log_pkey",
+      "schema": "public",
+      "table": "audit_log",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "auth_failures_pkey",
+      "schema": "public",
+      "table": "auth_failures",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "daily_procedures_pkey",
+      "schema": "public",
+      "table": "daily_procedures",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "documents_pkey",
+      "schema": "public",
+      "table": "documents",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "feature_requests_pkey",
+      "schema": "public",
+      "table": "feature_requests",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "media_pkey",
+      "schema": "public",
+      "table": "media",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "organization_profile_pkey",
+      "schema": "public",
+      "table": "organization_profile",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "permit_alert_deliveries_pkey",
+      "schema": "public",
+      "table": "permit_alert_deliveries",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "security_access_pkey",
+      "schema": "public",
+      "table": "security_access",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "security_access_members_pkey",
+      "schema": "public",
+      "table": "security_access_members",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "security_reports_pkey",
+      "schema": "public",
+      "table": "security_reports",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "transactions_pkey",
+      "schema": "public",
+      "table": "transactions",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "users_pkey",
+      "schema": "public",
+      "table": "users",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "vehicle_permits_pkey",
+      "schema": "public",
+      "table": "vehicle_permits",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "vehicles_pkey",
+      "schema": "public",
+      "table": "vehicles",
+      "entityType": "pks"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        "permit_id",
+        "alert_type"
+      ],
+      "nullsNotDistinct": false,
+      "name": "permit_alert_deliveries_permit_type_unique",
+      "entityType": "uniques",
+      "schema": "public",
+      "table": "permit_alert_deliveries"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "filename"
+      ],
+      "nullsNotDistinct": false,
+      "name": "media_filename_key",
+      "schema": "public",
+      "table": "media",
+      "entityType": "uniques"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "username"
+      ],
+      "nullsNotDistinct": false,
+      "name": "users_username_key",
+      "schema": "public",
+      "table": "users",
+      "entityType": "uniques"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "identity_number"
+      ],
+      "nullsNotDistinct": false,
+      "name": "users_identity_number_key",
+      "schema": "public",
+      "table": "users",
+      "entityType": "uniques"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "owner_login_id"
+      ],
+      "nullsNotDistinct": false,
+      "name": "users_owner_login_id_key",
+      "schema": "public",
+      "table": "users",
+      "entityType": "uniques"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "permit_number"
+      ],
+      "nullsNotDistinct": false,
+      "name": "vehicle_permits_permit_number_key",
+      "schema": "public",
+      "table": "vehicle_permits",
+      "entityType": "uniques"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "vehicle_code"
+      ],
+      "nullsNotDistinct": false,
+      "name": "vehicles_vehicle_code_key",
+      "schema": "public",
+      "table": "vehicles",
+      "entityType": "uniques"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "vehicle_plate"
+      ],
+      "nullsNotDistinct": false,
+      "name": "vehicles_vehicle_plate_key",
+      "schema": "public",
+      "table": "vehicles",
+      "entityType": "uniques"
+    },
+    {
+      "value": "\"category\" IN ('إضافة ميزة', 'تحسين أداء', 'متطلب أمني', 'مشكلة', 'أخرى')",
+      "name": "feature_requests_category_check",
+      "entityType": "checks",
+      "schema": "public",
+      "table": "feature_requests"
+    },
+    {
+      "value": "\"status\" IN ('جديد', 'قيد المراجعة', 'مقبول', 'مرفوض', 'مكتمل')",
+      "name": "feature_requests_status_check",
+      "entityType": "checks",
+      "schema": "public",
+      "table": "feature_requests"
+    },
+    {
+      "value": "\"id\" = 1",
+      "name": "organization_profile_singleton_check",
+      "entityType": "checks",
+      "schema": "public",
+      "table": "organization_profile"
+    },
+    {
+      "value": "\"alert_type\" IN ('expiring', 'expired')",
+      "name": "permit_alert_deliveries_type_check",
+      "entityType": "checks",
+      "schema": "public",
+      "table": "permit_alert_deliveries"
+    },
+    {
+      "value": "\"person_count\" > 0",
+      "name": "security_access_person_count_check",
+      "entityType": "checks",
+      "schema": "public",
+      "table": "security_access"
+    },
+    {
+      "value": "\"kind\" IN ('income', 'expense', 'purchase')",
+      "name": "transactions_kind_check",
+      "entityType": "checks",
+      "schema": "public",
+      "table": "transactions"
+    },
+    {
+      "value": "\"amount\" > 0",
+      "name": "transactions_amount_check",
+      "entityType": "checks",
+      "schema": "public",
+      "table": "transactions"
+    },
+    {
+      "value": "\"role\" IN ('admin', 'staff')",
+      "name": "users_role_check",
+      "entityType": "checks",
+      "schema": "public",
+      "table": "users"
+    }
+  ],
+  "renames": []
+}

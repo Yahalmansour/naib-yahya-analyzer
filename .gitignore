@@ -1,4 +1,13 @@
 node_modules/
 data/
+dist/
 .env
 npm-debug.log*
+# Netlify build/dev artifacts
+.netlify/v1/
+.netlify/state.json
+.netlify/functions-serve/
+.netlify/functions-internal/
+.netlify/blobs-serve/
+.netlify/db/
+.netlify/plugins/
