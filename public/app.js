@@ -25,10 +25,15 @@ let registering = false;
 let currentUser;
 let toastTimeout;
 
+// Netlify skew protection: the build embeds this deploy's token in the page. Sending it with every API call keeps
+// an open tab talking to the API version it was loaded with, even after a newer version is published.
+const skewToken = document.querySelector('meta[name="netlify-skew-token"]')?.content || '';
+
 async function api(url, options = {}) {
   const headers = new Headers(options.headers || {});
   const token = localStorage.getItem(tokenKey);
   if (token) headers.set('Authorization', 'Bearer ' + token);
+  if (skewToken) headers.set('x-skew-token', skewToken);
   if (options.body && !(options.body instanceof FormData)) headers.set('Content-Type', 'application/json');
   const response = await fetch(url, { ...options, headers });
   if (response.status === 204) return null;
